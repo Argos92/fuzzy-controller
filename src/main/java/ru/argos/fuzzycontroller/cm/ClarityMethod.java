@@ -1,6 +1,6 @@
 package ru.argos.fuzzycontroller.cm;
 
-import java.util.List;
+import ru.argos.fuzzycontroller.mf.MembershipFunction;
 
 /**
  * Функция дефаззификации.
@@ -12,8 +12,8 @@ public interface ClarityMethod {
     /**
      * Метод дефаззификации.
      *
-     * @param variables Нечеткое множество.
-     * @return Результат метода дефаззификации.
+     * @param mf Функция принадлежности.
+     * @return Результат функции дефаззификации.
      */
-    double calc(List<ClarityVariable> variables);
+    double calc(MembershipFunction mf);
 }

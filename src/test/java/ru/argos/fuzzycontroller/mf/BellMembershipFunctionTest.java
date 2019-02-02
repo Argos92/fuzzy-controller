@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.bell;
+
 /**
  * Тестовый класс, тестирующий колокообразную функцию принадлежности.
  *
@@ -49,21 +51,26 @@ public class BellMembershipFunctionTest extends MembershipFunctionTest {
 
     @Override
     protected MembershipFunction getCorrectMF() {
-        return MembershipFunctionBuilder.bell(20.0, 10.0, 60.0);
+        return bell(20.0, 10.0, 60.0);
+    }
+
+    @Override
+    protected String getCorrectToString() {
+        return "bell[x, 20.0, 10.0, 60.0]";
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTT(){
-        MembershipFunctionBuilder.bell(-20.0, -10.0, 60.0);
+        bell(-20.0, -10.0, 60.0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersFT(){
-        MembershipFunctionBuilder.bell(-20.0, 10.0, 60.0);
+        bell(-20.0, 10.0, 60.0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTF(){
-        MembershipFunctionBuilder.bell(20.0, -10.0, 60.0);
+        bell(20.0, -10.0, 60.0);
     }
 }

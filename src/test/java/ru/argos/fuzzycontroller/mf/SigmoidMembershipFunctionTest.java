@@ -38,4 +38,9 @@ public class SigmoidMembershipFunctionTest extends MembershipFunctionTest {
     protected MembershipFunction getCorrectMF() {
         return MembershipFunctionBuilder.sigmoid(0.1, 50);
     }
+
+    @Override
+    protected String getCorrectToString() {
+        return "sigmoid[x, 0.1, 50.0]";
+    }
 }

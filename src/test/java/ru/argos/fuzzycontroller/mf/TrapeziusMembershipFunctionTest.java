@@ -40,6 +40,11 @@ public class TrapeziusMembershipFunctionTest extends MembershipFunctionTest {
         return MembershipFunctionBuilder.trapezius(20, 40, 60, 80);
     }
 
+    @Override
+    protected String getCorrectToString() {
+        return "trapezius[x, 20.0, 40.0, 60.0, 80.0]";
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTTT(){
         MembershipFunctionBuilder.trapezius(80, 60 , 40, 20);

@@ -36,6 +36,11 @@ public class SMembershipFunctionTest extends MembershipFunctionTest {
         return MembershipFunctionBuilder.s(25, 75);
     }
 
+    @Override
+    protected String getCorrectToString() {
+        return "s[x, 25.0, 75.0]";
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTT(){
         MembershipFunctionBuilder.s(75, 25);

@@ -36,6 +36,11 @@ public class TriangularMembershipFunctionTest extends MembershipFunctionTest {
         return MembershipFunctionBuilder.triangular(25, 50, 75);
     }
 
+    @Override
+    protected String getCorrectToString() {
+        return "triangular[x, 25.0, 50.0, 75.0]";
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTT(){
         MembershipFunctionBuilder.triangular(75, 50, 25);

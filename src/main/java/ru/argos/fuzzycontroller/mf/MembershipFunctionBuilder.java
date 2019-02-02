@@ -33,7 +33,7 @@ public final class MembershipFunctionBuilder {
             throw new IllegalArgumentException();
         }
 
-        return trapezius(a, b, b, c);
+        return pieceLinear(a, b, b, c, "triangular[x, " + a + ", " + b + ", " + c + "]");
     }
 
     /**
@@ -56,25 +56,7 @@ public final class MembershipFunctionBuilder {
             throw new IllegalArgumentException();
         }
 
-        return x -> {
-            if (x <= a) {
-                return 0.0;
-            }
-
-            if (x <= b) {
-                return (x - a) / (b - a);
-            }
-
-            if (x <= c) {
-                return 1d;
-            }
-
-            if (x <= d) {
-                return (d - x) / (d - c);
-            }
-
-            return 0.0;
-        };
+        return pieceLinear(a, b, c, d, "trapezius[x, " + a + ", " + b + ", " + c + ", " + d + "]");
     }
 
     /**
@@ -125,7 +107,17 @@ public final class MembershipFunctionBuilder {
      * @return Функция принадлежности.
      */
     public static MembershipFunction sigmoid(final double a, final double b) {
-        return x -> 1.0 / (1.0 + Math.exp((0 - a) * (x - b)));
+        return new MembershipFunction() {
+            @Override
+            public double calc(double x) {
+                return 1.0 / (1.0 + Math.exp((0 - a) * (x - b)));
+            }
+
+            @Override
+            public String toString() {
+                return "sigmoid[x, " + a + ", " + b + "]";
+            }
+        };
     }
 
     /**
@@ -181,7 +173,17 @@ public final class MembershipFunctionBuilder {
             throw new IllegalArgumentException();
         }
 
-        return x -> 1.0 / (1.0 + Math.pow(Math.abs((x - c) / a), 2.0 * b));
+        return new MembershipFunction() {
+            @Override
+            public double calc(double x) {
+                return 1.0 / (1.0 + Math.pow(Math.abs((x - c) / a), 2.0 * b));
+            }
+
+            @Override
+            public String toString() {
+                return "bell[x, " + a + ", " + b + ", " + c + "]";
+            }
+        };
     }
 
     /**
@@ -197,22 +199,31 @@ public final class MembershipFunctionBuilder {
             throw new IllegalArgumentException();
         }
 
-        return x -> {
-            if (x <= a) {
-                return flag ? 0.0 : 1.0;
+        return new MembershipFunction() {
+
+            @Override
+            public double calc(double x) {
+                if (x <= a) {
+                    return flag ? 0.0 : 1.0;
+                }
+
+                if (x <= (a + b) / 2.0) {
+                    double probability = 2.0 * Math.pow((x - a) / (b - a), 2);
+                    return flag ? probability : 1.0 - probability;
+                }
+
+                if (x < b) {
+                    double probability = 2.0 * Math.pow((b - x) / (b - a), 2);
+                    return flag ? 1.0 - probability : probability;
+                }
+
+                return flag ? 1.0 : 0.0;
             }
 
-            if (x <= (a + b) / 2.0) {
-                double probability = 2.0 * Math.pow((x - a) / (b - a), 2);
-                return flag ? probability : 1.0 - probability;
+            @Override
+            public String toString() {
+                return (flag ? "s" : "z") + "[x, " + a + ", " + b + "]";
             }
-
-            if (x < b) {
-                double probability = 2.0 * Math.pow((b - x) / (b - a), 2);
-                return flag ? 1.0 - probability : probability;
-            }
-
-            return flag ? 1.0 : 0.0;
         };
     }
 
@@ -229,16 +240,65 @@ public final class MembershipFunctionBuilder {
             throw new IllegalArgumentException();
         }
 
-        return x -> {
-            if (x <= a) {
-                return flag ? 0.0 : 1.0;
+        return new MembershipFunction() {
+
+            @Override
+            public double calc(double x) {
+                if (x <= a) {
+                    return flag ? 0.0 : 1.0;
+                }
+
+                if (x < b) {
+                    return flag ? (x - a) / (b - a) : (b - x) / (b - a);
+                }
+
+                return flag ? 1.0 : 0.0;
             }
 
-            if (x < b) {
-                return flag ? (x - a) / (b - a) : (b - x) / (b - a);
+            @Override
+            public String toString() {
+                return (flag ? "s" : "z") + "-line[x, " + a + ", " + b + "]";
+            }
+        };
+    }
+
+    /**
+     * Триугольная или трацепевидная функция принадлежности.
+     *
+     * @param a Характерезует нижнее основание трапеции.
+     * @param b Характерезует верхнее основание трапеции.
+     * @param c Характерезует верхнее основание трапеции.
+     * @param d Характерезует нижнее основание трапеции.
+     * @param toString Значение для метода {@see MembershipFunction#toString}.
+     * @return Функция принадлежности.
+     */
+    private static MembershipFunction pieceLinear(final double a, final double b, final double c, final double d, final String toString) {
+        return new MembershipFunction() {
+            @Override
+            public double calc(double x) {
+                if (x <= a) {
+                    return 0.0;
+                }
+
+                if (x <= b) {
+                    return (x - a) / (b - a);
+                }
+
+                if (x <= c) {
+                    return 1d;
+                }
+
+                if (x <= d) {
+                    return (d - x) / (d - c);
+                }
+
+                return 0.0;
             }
 
-            return flag ? 1.0 : 0.0;
+            @Override
+            public String toString() {
+                return toString;
+            }
         };
     }
 }

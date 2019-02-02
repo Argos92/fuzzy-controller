@@ -1,11 +1,6 @@
 package ru.argos.fuzzycontroller.cm;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.function.Function;
-import java.util.stream.DoubleStream;
+import java.util.function.BiFunction;
 
 /**
  * Статический класс в котором реализованы стандартные методы дефаззификации.
@@ -28,12 +23,24 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod centerOfGravity() {
-        return variables -> {
+        return centerOfGravity(0.0, 1.0, 0.0001);
+    }
+
+    /**
+     * Метод центра тяжести.
+     *
+     * @param startWith Начала интервала.
+     * @param endWith Конец интервала.
+     * @param step Шаг.
+     * @return Метод дефаззификации.
+     */
+    public static ClarityMethod centerOfGravity(double startWith, double endWith, double step) {
+        return mf -> {
             double numerator = 0.0, denominator = 0.0;
 
-            for (ClarityVariable variable : variables) {
-                numerator += variable.getProbability() * variable.getWeight();
-                denominator += variable.getProbability();
+            for (double x = startWith ; x <= endWith ; x += step) {
+                numerator += x * mf.calc(x);
+                denominator += x;
             }
 
             return numerator / denominator;
@@ -46,13 +53,33 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod averageMaximum() {
-        return variables -> {
-            double count = 0.0, amount = 0.0, max = max(variables);
+        return averageMaximum(0.0, 1.0, 0.0001);
+    }
 
-            for (ClarityVariable variable : variables) {
-                if (variable.getProbability() == max) {
-                    amount += variable.getWeight();
+    /**
+     * Метод среднего максимума.
+     *
+     * @param startWith Начала интервала.
+     * @param endWith Конец интервала.
+     * @param step Шаг.
+     * @return Метод дефаззификации.
+     */
+    public static ClarityMethod averageMaximum(double startWith, double endWith, double step) {
+        return mf -> {
+            double count = 0.0, amount = 0.0, max = 0.0;
+
+            for (double x = startWith ; x <= endWith ; x += step) {
+                double probability = mf.calc(x);
+
+                if (max == probability) {
                     count += 1.0;
+                    amount += x;
+                }
+
+                if (max < probability) {
+                    count = 1.0;
+                    amount = x;
+                    max = probability;
                 }
             }
 
@@ -66,7 +93,19 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod leftMaximum() {
-        return leftOrRightMaximum(DoubleStream::min);
+        return leftMaximum(0.0, 1.0, 0.0001);
+    }
+
+    /**
+     * Метод левого максимума.
+     *
+     * @param startWith Начала интервала.
+     * @param endWith Конец интервала.
+     * @param step Шаг.
+     * @return Метод дефаззификации.
+     */
+    public static ClarityMethod leftMaximum(double startWith, double endWith, double step) {
+        return leftOrRightMaximum(startWith, endWith, step, Double::min);
     }
 
     /**
@@ -75,32 +114,46 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod rightMaximum() {
-        return leftOrRightMaximum(DoubleStream::max);
+        return rightMaximum(0.0, 1.0, 0.0001);
+    }
+
+    /**
+     * Метод правого максимума.
+     *
+     * @param startWith Начала интервала.
+     * @param endWith Конец интервала.
+     * @param step Шаг.
+     * @return Метод дефаззификации.
+     */
+    public static ClarityMethod rightMaximum(double startWith, double endWith, double step) {
+        return leftOrRightMaximum(startWith, endWith, step, Double::max);
     }
 
     /**
      * Метод левого/правого максимума.
-     *
+     * @param startWith Начала интервала.
+     * @param endWith Конец интервала.
+     * @param step Шаг.
+     * @param function Функция выбора значения.
      * @return Метод дефаззификации.
      */
-    private static ClarityMethod leftOrRightMaximum(Function<DoubleStream, OptionalDouble> function) {
-        return variables -> {
-            double max = max(variables);
+    private static ClarityMethod leftOrRightMaximum(double startWith, double endWith, double step, BiFunction<Double, Double, Double> function) {
+        return mf -> {
+            double max = 0.0, result = 0.0;
 
-            return function.apply(variables.stream()
-                                           .filter(variable -> variable.getProbability() == max)
-                                           .mapToDouble(ClarityVariable::getWeight))
-                           .orElseThrow(IllegalAccessError::new);
+            for (double x = startWith ; x < endWith ; x += step) {
+                double probability = mf.calc(x);
+                if (max == probability) {
+                    result = function.apply(x, result);
+                }
+
+                if (max < probability) {
+                    max = probability;
+                    result = x;
+                }
+            }
+
+            return result;
         };
-    }
-
-    /**
-     * Нахождение максимального значения функции принадлежности.
-     *
-     * @param variables Нечетких переменных.
-     * @return Максимального значения функции принадлежности.
-     */
-    private static double max(List<ClarityVariable> variables) {
-        return Collections.max(variables, Comparator.comparingDouble(ClarityVariable::getProbability)).getProbability();
     }
 }

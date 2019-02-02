@@ -36,6 +36,11 @@ public class ZLineMembershipFunctionTest extends MembershipFunctionTest {
         return MembershipFunctionBuilder.zLine(25, 75);
     }
 
+    @Override
+    protected String getCorrectToString() {
+        return "z-line[x, 25.0, 75.0]";
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTT(){
         MembershipFunctionBuilder.zLine(75, 25);

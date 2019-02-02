@@ -13,6 +13,13 @@ import java.util.Map;
 public abstract class MembershipFunctionTest {
 
     /**
+     * Результат функции {@see MembershipFunction#toString}.
+     *
+     * @return Результат {@see MembershipFunction#toString}.
+     */
+    protected abstract String getCorrectToString();
+
+    /**
      * Данные ручных рассчетов функции принадлежности, где {@link Map.Entry#getKey()} - величина, относительно которой
      * сформирована функция принадлежности, а {@link Map.Entry#getValue()} - ожидаемый результат функции принадлежности.
      *
@@ -32,5 +39,10 @@ public abstract class MembershipFunctionTest {
         MembershipFunction mf = getCorrectMF();
 
         getCorrectData().forEach((key, value) -> Assert.assertEquals(value, mf.calc(key), 0.00001));
+    }
+
+    @Test
+    public void testToString() {
+        Assert.assertEquals(getCorrectToString(), getCorrectMF().toString());
     }
 }

@@ -36,6 +36,11 @@ public class ZMembershipFunctionTest extends MembershipFunctionTest {
         return MembershipFunctionBuilder.z(25, 75);
     }
 
+    @Override
+    protected String getCorrectToString() {
+        return "z[x, 25.0, 75.0]";
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTT(){
         MembershipFunctionBuilder.z(75, 25);

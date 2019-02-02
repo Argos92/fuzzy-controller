@@ -36,6 +36,11 @@ public class SLineMembershipFunctionTest extends MembershipFunctionTest {
         return MembershipFunctionBuilder.sLine(25, 75);
     }
 
+    @Override
+    protected String getCorrectToString() {
+        return "s-line[x, 25.0, 75.0]";
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testWrongParametersTT(){
         MembershipFunctionBuilder.sLine(75, 25);
