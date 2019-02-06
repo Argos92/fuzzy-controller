@@ -6,8 +6,6 @@ import ru.argos.fuzzycontroller.operators.Operator;
 import java.util.List;
 import java.util.Map;
 
-import static ru.argos.fuzzycontroller.utils.Utils.getOrThrow;
-
 /**
  * Статический класс, описания системы нечеткого логического вывода по аглогитму Сугено.
  *
@@ -45,9 +43,10 @@ public class SugenoBuilder {
      * Создает нечеткое правило.
      *
      * @param condition Условие нечеткого правила.
+     * @param conclusion Заключение нечеткого правила.
      * @return Нечеткое правило.
      */
-    public static Rule rule(Operator condition) {
+    public static Rule rule(Operator condition, Operator conclusion) {
         return new Rule() {
             @Override
             public double condition(Map<String, Double> parameters) {
@@ -56,14 +55,7 @@ public class SugenoBuilder {
 
             @Override
             public double conclusion(Map<String, Double> parameters) {
-                return condition.getTerms()
-                                .stream()
-                                .mapToDouble(term -> {
-                                    double x = getOrThrow(parameters, term.variable().name());
-
-                                    return x * term.calc(x);
-                                })
-                                .sum();
+                return conclusion.calc(parameters);
             }
         };
     }
