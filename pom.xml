@@ -7,6 +7,22 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <name>Fuzzy Controller</name>
+    <description>Алгоритмы нечеткого логического вывода.</description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/Argos92/fuzzy-controller.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
