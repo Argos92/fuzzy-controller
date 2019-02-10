@@ -9,6 +9,20 @@ import java.util.function.BiFunction;
  */
 public final class ClarityMethodBuilder {
 
+    /**
+     * Начала интервала.
+     */
+    private static final double START_WITH = 0.0;
+
+    /**
+     * Конец интервала.
+     */
+    private static final double END_WITH = 1.0;
+
+    /**
+     * Шаг.
+     */
+    private static final double STEP = 0.0001;
 
     /**
      * Приватный конструктор.
@@ -23,7 +37,7 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod centerOfGravity() {
-        return centerOfGravity(0.0, 1.0, 0.0001);
+        return centerOfGravity(START_WITH, END_WITH, STEP);
     }
 
     /**
@@ -34,11 +48,13 @@ public final class ClarityMethodBuilder {
      * @param step Шаг.
      * @return Метод дефаззификации.
      */
-    public static ClarityMethod centerOfGravity(double startWith, double endWith, double step) {
+    public static ClarityMethod centerOfGravity(final double startWith,
+                                                final double endWith,
+                                                final double step) {
         return mf -> {
             double numerator = 0.0, denominator = 0.0;
 
-            for (double x = startWith ; x <= endWith ; x += step) {
+            for (double x = startWith; x <= endWith; x += step) {
                 numerator += x * mf.calc(x);
                 denominator += x;
             }
@@ -53,7 +69,7 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod averageMaximum() {
-        return averageMaximum(0.0, 1.0, 0.0001);
+        return averageMaximum(START_WITH, END_WITH, STEP);
     }
 
     /**
@@ -64,11 +80,13 @@ public final class ClarityMethodBuilder {
      * @param step Шаг.
      * @return Метод дефаззификации.
      */
-    public static ClarityMethod averageMaximum(double startWith, double endWith, double step) {
+    public static ClarityMethod averageMaximum(final double startWith,
+                                               final double endWith,
+                                               final double step) {
         return mf -> {
             double count = 0.0, amount = 0.0, max = 0.0;
 
-            for (double x = startWith ; x <= endWith ; x += step) {
+            for (double x = startWith; x <= endWith; x += step) {
                 double probability = mf.calc(x);
 
                 if (max == probability) {
@@ -93,7 +111,7 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod leftMaximum() {
-        return leftMaximum(0.0, 1.0, 0.0001);
+        return leftMaximum(START_WITH, END_WITH, STEP);
     }
 
     /**
@@ -104,7 +122,9 @@ public final class ClarityMethodBuilder {
      * @param step Шаг.
      * @return Метод дефаззификации.
      */
-    public static ClarityMethod leftMaximum(double startWith, double endWith, double step) {
+    public static ClarityMethod leftMaximum(final double startWith,
+                                            final double endWith,
+                                            final double step) {
         return leftOrRightMaximum(startWith, endWith, step, Double::min);
     }
 
@@ -114,7 +134,7 @@ public final class ClarityMethodBuilder {
      * @return Метод дефаззификации.
      */
     public static ClarityMethod rightMaximum() {
-        return rightMaximum(0.0, 1.0, 0.0001);
+        return rightMaximum(START_WITH, END_WITH, STEP);
     }
 
     /**
@@ -125,23 +145,31 @@ public final class ClarityMethodBuilder {
      * @param step Шаг.
      * @return Метод дефаззификации.
      */
-    public static ClarityMethod rightMaximum(double startWith, double endWith, double step) {
+    public static ClarityMethod rightMaximum(final double startWith,
+                                             final double endWith,
+                                             final double step) {
         return leftOrRightMaximum(startWith, endWith, step, Double::max);
     }
 
     /**
      * Метод левого/правого максимума.
+     *
      * @param startWith Начала интервала.
      * @param endWith Конец интервала.
      * @param step Шаг.
      * @param function Функция выбора значения.
      * @return Метод дефаззификации.
      */
-    private static ClarityMethod leftOrRightMaximum(double startWith, double endWith, double step, BiFunction<Double, Double, Double> function) {
+    private static ClarityMethod
+        leftOrRightMaximum(final double startWith,
+                           final double endWith,
+                           final double step,
+                           final BiFunction<Double, Double, Double> function) {
+
         return mf -> {
             double max = 0.0, result = 0.0;
 
-            for (double x = startWith ; x < endWith ; x += step) {
+            for (double x = startWith; x < endWith; x += step) {
                 double probability = mf.calc(x);
                 if (max == probability) {
                     result = function.apply(x, result);

@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Статический класс, описания системы нечеткого логического вывода по упрощенному алгоритму.
+ * Статический класс, описания системы нечеткого логического вывода по
+ * упрощенному алгоритму.
  *
  * @author a.k.pohresnyi
  */
-public class SimplifiedAlgorithmBuilder {
+public final class SimplifiedAlgorithmBuilder {
 
     /**
      * Приватный конструктор.
@@ -26,7 +27,7 @@ public class SimplifiedAlgorithmBuilder {
      * @param rules База нечетких правил.
      * @return Система нечеткого логического вывода по упрощенному алгоритму.
      */
-    public static SimplifiedAlgorithm of(List<Rule> rules) {
+    public static SimplifiedAlgorithm of(final List<Rule> rules) {
         return parameters -> {
             double numerator = 0.0, denominator = 0.0;
 
@@ -46,10 +47,10 @@ public class SimplifiedAlgorithmBuilder {
      * @param conclusion Вес нечетного правила.
      * @return Нечеткое правило.
      */
-    public static Rule rule(Operator condition, double conclusion) {
+    public static Rule rule(final Operator condition, final double conclusion) {
         return new Rule() {
             @Override
-            public double condition(Map<String, Double> parameters) {
+            public double condition(final Map<String, Double> parameters) {
                 return condition.calc(parameters);
             }
 

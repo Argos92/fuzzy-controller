@@ -7,11 +7,12 @@ import ru.argos.fuzzycontroller.variables.Term;
 import java.util.List;
 
 /**
- * Статический класс, описания системы нечеткого логического вывода по алоритму Мамдани.
+ * Статический класс, описания системы нечеткого логического вывода по алоритму
+ * Мамдани.
  *
  * @author a.k.pohresnyi
  */
-public class MamdaniBuilder {
+public final class MamdaniBuilder {
 
     /**
      * Приватный конструктор.
@@ -26,12 +27,13 @@ public class MamdaniBuilder {
      * @param rules База нечетких правил.
      * @return Система нечеткого логического вывода по алгоритму Мамдани.
      */
-    public static Mamdani of(List<Rule> rules) {
-        return parameters -> x -> rules.stream()
-                                       .map(rule -> rule.compose(parameters))
-                                       .map(mf -> mf.calc(x))
-                                       .max(Double::compareTo)
-                                       .orElseThrow(IllegalAccessError::new);
+    public static Mamdani of(final List<Rule> rules) {
+        return parameters ->
+                x -> rules.stream()
+                          .map(rule -> rule.compose(parameters))
+                          .map(mf -> mf.calc(x))
+                          .max(Double::compareTo)
+                          .orElseThrow(IllegalAccessError::new);
     }
 
     /**
@@ -41,7 +43,8 @@ public class MamdaniBuilder {
      * @param conclusion Терм выходной лингвистической переменной.
      * @return Нечеткое правило.
      */
-    public static Rule rule(Operator condition, Term conclusion) {
-        return parameters -> x -> Double.min(condition.calc(parameters), conclusion.calc(x));
+    public static Rule rule(final Operator condition, final Term conclusion) {
+        return parameters ->
+                x -> Double.min(condition.calc(parameters), conclusion.calc(x));
     }
 }

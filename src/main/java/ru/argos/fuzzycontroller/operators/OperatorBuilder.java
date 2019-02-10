@@ -28,10 +28,10 @@ public final class OperatorBuilder {
      * @param o2 Логический оператор.
      * @return Логический оператор <strong>И</strong>.
      */
-    public static Operator and(Operator o1, Operator o2) {
+    public static Operator and(final Operator o1, final Operator o2) {
         return new Operator() {
             @Override
-            public double calc(Map<String, Double> parameters) {
+            public double calc(final Map<String, Double> parameters) {
                 return Double.min(o1.calc(parameters), o2.calc(parameters));
             }
 
@@ -54,10 +54,10 @@ public final class OperatorBuilder {
      * @param o2 Логический оператор.
      * @return Логический оператор <strong>Или</strong>.
      */
-    public static Operator or(Operator o1, Operator o2) {
+    public static Operator or(final Operator o1, final Operator o2) {
         return new Operator() {
             @Override
-            public double calc(Map<String, Double> parameters) {
+            public double calc(final Map<String, Double> parameters) {
                 return Double.max(o1.calc(parameters), o2.calc(parameters));
             }
 
@@ -78,10 +78,10 @@ public final class OperatorBuilder {
      * @param operator Логический оператор.
      * @return Логический оператор <strong>Не</strong>.
      */
-    public static Operator not(Operator operator) {
+    public static Operator not(final Operator operator) {
         return new Operator() {
             @Override
-            public double calc(Map<String, Double> parameters) {
+            public double calc(final Map<String, Double> parameters) {
                 return 1.0 - operator.calc(parameters);
             }
 

@@ -12,10 +12,12 @@ import java.util.Map;
 public interface Larsen {
 
     /**
-     * Композиция. Нахождение функции принадлежности для выходной лингвистической переменной.
+     * Композиция. Нахождение функции принадлежности для выходной
+     * лингвистической переменной.
      *
-     * @param parameters Входные параметры, где {@link Map.Entry#getKey()} - название лингвистической переменной,
-     *                   а {@link Map.Entry#getValue()} - входное значение.
+     * @param parameters Входные параметры, где {@link Map.Entry#getKey()} -
+     *                  название лингвистической переменной, а
+     *                  {@link Map.Entry#getValue()} - входное значение.
      * @return Функция принадлежности.
      */
     MembershipFunction compose(Map<String, Double> parameters);
@@ -30,8 +32,9 @@ public interface Larsen {
         /**
          * Композиция. Нахождение усеченной функции принадлежности правила.
          *
-         * @param parameters Входные параметры, где {@link Map.Entry#getKey()} - название лингвистической переменной,
-         *                   а {@link Map.Entry#getValue()} - входное значение.
+         * @param parameters Входные параметры, где {@link Map.Entry#getKey()} -
+         *                  название лингвистической переменной, а
+         *                  {@link Map.Entry#getValue()} - входное значение.
          * @return Функция принадлежности.
          */
         MembershipFunction compose(Map<String, Double> parameters);

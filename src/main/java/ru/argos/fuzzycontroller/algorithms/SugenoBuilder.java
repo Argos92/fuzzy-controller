@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Статический класс, описания системы нечеткого логического вывода по аглогитму Сугено.
+ * Статический класс, описания системы нечеткого логического вывода по аглогитму
+ * Сугено.
  *
  * @author a.k.pohresnyi
  */
-public class SugenoBuilder {
+public final class SugenoBuilder {
 
     /**
      * Приватный конструктор.
@@ -26,13 +27,15 @@ public class SugenoBuilder {
      * @param rules База нечетких правил.
      * @return Система нечеткого логического вывода по алгоритму Сугено.
      */
-    public static Sugeno of(List<Rule> rules) {
+    public static Sugeno of(final List<Rule> rules) {
         return parameters -> {
             double numerator = 0.0, denominator = 0.0;
 
             for (Rule rule : rules) {
-                numerator += rule.condition(parameters) * rule.conclusion(parameters);
-                denominator += rule.conclusion(parameters);
+                double conclusion = rule.conclusion(parameters);
+
+                numerator += rule.condition(parameters) * conclusion;
+                denominator += conclusion;
             }
 
             return numerator / denominator;
@@ -46,15 +49,16 @@ public class SugenoBuilder {
      * @param conclusion Заключение нечеткого правила.
      * @return Нечеткое правило.
      */
-    public static Rule rule(Operator condition, Operator conclusion) {
+    public static Rule rule(final Operator condition,
+                            final Operator conclusion) {
         return new Rule() {
             @Override
-            public double condition(Map<String, Double> parameters) {
+            public double condition(final Map<String, Double> parameters) {
                 return condition.calc(parameters);
             }
 
             @Override
-            public double conclusion(Map<String, Double> parameters) {
+            public double conclusion(final Map<String, Double> parameters) {
                 return conclusion.calc(parameters);
             }
         };

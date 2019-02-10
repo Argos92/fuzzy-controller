@@ -17,6 +17,21 @@ import static ru.argos.fuzzycontroller.utils.Utils.unmodifiableList;
 public final class VariableBuilder {
 
     /**
+     * Начала интервала.
+     */
+    private static final double START_WITH = 0.0;
+
+    /**
+     * Конец интервала.
+     */
+    private static final double END_WITH = 1.0;
+
+    /**
+     * Шаг.
+     */
+    private static final double STEP = 0.0001;
+
+    /**
      * Приветный конструктор.
      */
     private VariableBuilder() {
@@ -24,36 +39,44 @@ public final class VariableBuilder {
     }
 
     /**
-     * Создает лингвистическую переменную
+     * Создает лингвистическую переменную.
      *
      * @param name Название лингвистической переменной
-     * @param terms Список термов, где {@link Map.Entry#getKey()} - название терма, а {@link Map.Entry#getValue()} - функция
-     *              принадлежности.
+     * @param terms Список термов, где {@link Map.Entry#getKey()} - название
+     *             терма, а {@link Map.Entry#getValue()} - функция
+     *             принадлежности.
      * @return Лингвистическая переменная.
      */
-    public static Variable of(String name, Map<String, MembershipFunction> terms) {
-        return of(name, 0.0, 1.0, 0.0001, terms);
+    public static Variable of(final String name,
+                              final Map<String, MembershipFunction> terms) {
+        return of(name, START_WITH, END_WITH, STEP, terms);
     }
 
     /**
-     * Создает лингвистическую переменную
+     * Создает лингвистическую переменную.
      *
      * @param name Название лингвистической переменной
      * @param startWith Начала интервала.
      * @param endWith Начала интервала.
      * @param step Шаг.
-     * @param terms Список термов, где {@link Map.Entry#getKey()} - название терма, а {@link Map.Entry#getValue()} - функция
+     * @param terms Список термов, где {@link Map.Entry#getKey()} - название
+     *             терма, а {@link Map.Entry#getValue()} - функция
      *              принадлежности.
      * @return Лингвистическая переменная.
      */
-    public static Variable of(String name, double startWith, double endWith, double step, Map<String, MembershipFunction> terms) {
+    public static Variable of(final String name,
+                              final double startWith,
+                              final double endWith,
+                              final double step,
+                              final Map<String, MembershipFunction> terms) {
         return new Variable() {
             @Override
-            public Operator is(String term) {
+            public Operator is(final String term) {
                 return new Operator() {
                     @Override
-                    public double calc(Map<String, Double> map) {
-                        return getOrThrow(terms, term).calc(getOrThrow(map, name));
+                    public double calc(final Map<String, Double> map) {
+                        return getOrThrow(terms, term)
+                                .calc(getOrThrow(map, name));
                     }
 
                     @Override
@@ -69,7 +92,7 @@ public final class VariableBuilder {
             }
 
             @Override
-            public Term get(String term) {
+            public Term get(final String term) {
                 return TermBuilder.of(this, term, getOrThrow(terms, term));
             }
 

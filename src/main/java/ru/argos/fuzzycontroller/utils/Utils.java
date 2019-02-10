@@ -27,7 +27,8 @@ public final class Utils {
      * @param <K> Тип ключа.
      * @param <V> Тип Значения.
      * @return Значение из Map.
-     * @throws IllegalArgumentException Если значения по заданному ключу нет в Map.
+     * @throws IllegalArgumentException Если значения по заданному ключу нет
+     *                                 в Map.
      */
     public static <K, V> V getOrThrow(final Map<K, V> map, final K key) {
         V value = map.get(key);
@@ -47,7 +48,8 @@ public final class Utils {
      * @param <V> Тип.
      * @return Неизменяемый список.
      */
-    public static <V> List<V> unmodifiableList(final List<V> v1, final List<V> v2) {
+    public static <V> List<V> unmodifiableList(final List<V> v1,
+                                               final List<V> v2) {
         return unmodifiableList(
                 new ArrayList<>(v1.size() + v1.size()) {{
                     addAll(v1);

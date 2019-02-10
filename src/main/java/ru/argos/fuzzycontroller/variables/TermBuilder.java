@@ -3,7 +3,8 @@ package ru.argos.fuzzycontroller.variables;
 import ru.argos.fuzzycontroller.mf.MembershipFunction;
 
 /**
- * Статический класс в котором реализовано создание терма лингвистической переменной.
+ * Статический класс в котором реализовано создание терма лингвистической
+ * переменной.
  *
  * @author a.k.pohresnyi
  */
@@ -24,7 +25,9 @@ public final class TermBuilder {
      * @param mf Функция принадлежности терма.
      * @return Терм лингвистичской переменной.
      */
-    public static Term of(Variable variable, String name, MembershipFunction mf) {
+    public static Term of(final Variable variable,
+                          final String name,
+                          final MembershipFunction mf) {
         return new Term() {
             @Override
             public String name() {
@@ -32,7 +35,7 @@ public final class TermBuilder {
             }
 
             @Override
-            public double calc(double x) {
+            public double calc(final double x) {
                 return mf.calc(x);
             }
 

@@ -19,21 +19,26 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/triangular.png" alt="Треугольная функция принадлежности" height="100">,
+     * <img src="doc-files/triangular.png" alt="Треугольная ФП" height="100">,
      * <p>
-     * где a, b, c - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt;= b &lt;= c.
+     * где a, b, c - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt;= b &lt;= c.
      *
      * @param a Характерезует основание треуголинка.
      * @param b Характерезует вершину треуголинка.
      * @param c Характерезует основание треуголинка.
      * @return Функция принадлежности.
      */
-    public static MembershipFunction triangular(final double a, final double b, final double c) {
+    public static MembershipFunction triangular(final double a,
+                                                final double b,
+                                                final double c) {
         if (!(a <= b) || !(b <= c)) {
             throw new IllegalArgumentException();
         }
 
-        return pieceLinear(a, b, b, c, "triangular[x, " + a + ", " + b + ", " + c + "]");
+        String toString = "triangular[x, " + a + ", " + b + ", " + c + "]";
+
+        return pieceLinear(a, b, b, c, toString);
     }
 
     /**
@@ -41,9 +46,11 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/trapezius.png" alt="Трацепевидная функция принадлежности" height="100">,
+     * <img src="doc-files/trapezius.png" alt="Трацепевидная ФП" height="100">,
      * <p>
-     * где a, b, c, d - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt;= b &lt;= c &lt;= d.
+     * где a, b, c, d - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением
+     * a &lt;= b &lt;= c &lt;= d.
      *
      * @param a Характерезует нижнее основание трапеции.
      * @param b Характерезует верхнее основание трапеции.
@@ -51,12 +58,18 @@ public final class MembershipFunctionBuilder {
      * @param d Характерезует нижнее основание трапеции.
      * @return Функция принадлежности.
      */
-    public static MembershipFunction trapezius(final double a, final double b, final double c, final double d) {
+    public static MembershipFunction trapezius(final double a,
+                                               final double b,
+                                               final double c,
+                                               final double d) {
         if (!(a <= b) || !(b <= c) || !(c <= d)) {
             throw new IllegalArgumentException();
         }
 
-        return pieceLinear(a, b, c, d, "trapezius[x, " + a + ", " + b + ", " + c + ", " + d + "]");
+        String toString =
+                "trapezius[x, " + a + ", " + b + ", " + c + ", " + d + "]";
+
+        return pieceLinear(a, b, c, d, toString);
     }
 
     /**
@@ -64,9 +77,10 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/z.png" alt="Z-образная функция принадлежности" height="100">,
+     * <img src="doc-files/z.png" alt="Z-образная ФП" height="100">,
      * <p>
-     * где a, b - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt; b.
+     * где a, b - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt; b.
      *
      * @param a Левая точка излома.
      * @param b Правай точка излома.
@@ -81,9 +95,10 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/s.png" alt="S-образная функция принадлежности" height="100">,
+     * <img src="doc-files/s.png" alt="S-образная ФП" height="100">,
      * <p>
-     * где a, b - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt; b.
+     * где a, b - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt; b.
      *
      * @param a Левая точка излома.
      * @param b Правай точка излома.
@@ -98,9 +113,14 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/sigmoid.png" alt="Сигмоидальная функция принадлежности" height="100">,
+     * <img src="doc-files/sigmoid.png" alt="Сигмоидальная ФП" height="100">,
      * <p>
-     * где a, b - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt; b, а e - основание натуральных логарифмов, которое инициирут задание соответсвующей экспоненциальной функции. При этом в случае a &gt; 0 может быть получена S-образная функция принадлежности, а в случае a &lt; 0 - Z-образная функция принадлежности.
+     * где a, b - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt; b, а e -
+     * основание натуральных логарифмов, которое инициирут задание
+     * соответсвующей экспоненциальной функции. При этом в случае a &gt; 0
+     * может быть получена S-образная функция принадлежности, а в случае
+     * a &lt; 0 - Z-образная функция принадлежности.
      *
      * @param a Характеризует наклон графика.
      * @param b Координата точки перегиба.
@@ -109,7 +129,7 @@ public final class MembershipFunctionBuilder {
     public static MembershipFunction sigmoid(final double a, final double b) {
         return new MembershipFunction() {
             @Override
-            public double calc(double x) {
+            public double calc(final double x) {
                 return 1.0 / (1.0 + Math.exp((0 - a) * (x - b)));
             }
 
@@ -125,9 +145,10 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/z-line.png" alt="Линейная Z-образная функция принадлежности" height="100">,
+     * <img src="doc-files/z-line.png" alt="Л-ая Z-образная ФП" height="100">,
      * <p>
-     * где a, b - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt; b.
+     * где a, b - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt; b.
      *
      * @param a Левая точка излома.
      * @param b Правай точка излома.
@@ -142,9 +163,10 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/s-line.png" alt="Линейная S-образная функция принадлежности" height="100">,
+     * <img src="doc-files/s-line.png" alt="Л-ая S-образная ФП" height="100">,
      * <p>
-     * где a, b - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt; b.
+     * где a, b - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt; b.
      *
      * @param a Левая точка излома.
      * @param b Правай точка излома.
@@ -159,23 +181,27 @@ public final class MembershipFunctionBuilder {
      * <p>
      * Функция принаждежности задана аналитически следующим выражением:
      * <p>
-     * <img src="doc-files/bell.png" alt="Колоколообразная функция принадлежности" height="100">,
+     * <img src="doc-files/bell.png" alt="Колоколообразная ФП" height="100">,
      * <p>
-     * где a, b, c - некоторые числовые параметры, принимающие произвольные действительные значения и упорядоченые отношением a &lt; b &lt; c.
+     * где a, b, c - некоторые числовые параметры, принимающие произвольные
+     * действительные значения и упорядоченые отношением a &lt; b &lt; c.
      *
      * @param a Расстояние от пика до точек перехода.
-     * @param b Характеризует наклон графика, с увеличением увеличивается крутизна графика.
+     * @param b Характеризует наклон графика, с увеличением увеличивается
+     *          крутизна графика.
      * @param c Характерезует основание колокола.
      * @return Функция принадлежности.
      */
-    public static MembershipFunction bell(final double a, final double b, final double c) {
+    public static MembershipFunction bell(final double a,
+                                          final double b,
+                                          final double c) {
         if (!(a > 0) || !(b >= 0)) {
             throw new IllegalArgumentException();
         }
 
         return new MembershipFunction() {
             @Override
-            public double calc(double x) {
+            public double calc(final double x) {
                 return 1.0 / (1.0 + Math.pow(Math.abs((x - c) / a), 2.0 * b));
             }
 
@@ -194,7 +220,9 @@ public final class MembershipFunctionBuilder {
      * @param flag S-образная функция принадлежности.
      * @return Функция принадлежности.
      */
-    private static MembershipFunction spline(final double a, final double b, final boolean flag) {
+    private static MembershipFunction spline(final double a,
+                                             final double b,
+                                             final boolean flag) {
         if (!(a < b)) {
             throw new IllegalArgumentException();
         }
@@ -202,7 +230,7 @@ public final class MembershipFunctionBuilder {
         return new MembershipFunction() {
 
             @Override
-            public double calc(double x) {
+            public double calc(final double x) {
                 if (x <= a) {
                     return flag ? 0.0 : 1.0;
                 }
@@ -235,7 +263,9 @@ public final class MembershipFunctionBuilder {
      * @param flag S-образная функция принадлежности.
      * @return Функция принадлежности.
      */
-    private static MembershipFunction line(final double a, final double b, final boolean flag) {
+    private static MembershipFunction line(final double a,
+                                           final double b,
+                                           final boolean flag) {
         if (!(a < b)) {
             throw new IllegalArgumentException();
         }
@@ -243,7 +273,7 @@ public final class MembershipFunctionBuilder {
         return new MembershipFunction() {
 
             @Override
-            public double calc(double x) {
+            public double calc(final double x) {
                 if (x <= a) {
                     return flag ? 0.0 : 1.0;
                 }
@@ -272,10 +302,14 @@ public final class MembershipFunctionBuilder {
      * @param toString Значение для метода {@see MembershipFunction#toString}.
      * @return Функция принадлежности.
      */
-    private static MembershipFunction pieceLinear(final double a, final double b, final double c, final double d, final String toString) {
+    private static MembershipFunction pieceLinear(final double a,
+                                                  final double b,
+                                                  final double c,
+                                                  final double d,
+                                                  final String toString) {
         return new MembershipFunction() {
             @Override
-            public double calc(double x) {
+            public double calc(final double x) {
                 if (x <= a) {
                     return 0.0;
                 }
