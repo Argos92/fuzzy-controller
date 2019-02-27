@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Тестовый класс, тестирующий трапецивидную функцую принадлежности.
+ * Тестирование трапецивидной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public class TrapeziusMembershipFunctionTest extends MembershipFunctionTest {
 

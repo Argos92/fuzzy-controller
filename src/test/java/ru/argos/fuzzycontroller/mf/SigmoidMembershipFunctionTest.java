@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Тестовый класс, тестирующий сигмоидальную функцию принадлежности.
+ * Тестирование сигмоидальной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public class SigmoidMembershipFunctionTest extends MembershipFunctionTest {
 

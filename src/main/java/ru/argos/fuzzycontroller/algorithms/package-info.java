@@ -1,6 +1,6 @@
 /**
- * Пакет содержит классы реализующие алгоритмы нечеткого логического вывода.
+ * Пакет содержит классы, реализующие алгоритмы нечеткого логического вывода.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 package ru.argos.fuzzycontroller.algorithms;

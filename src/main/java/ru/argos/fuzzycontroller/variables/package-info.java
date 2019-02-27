@@ -1,6 +1,6 @@
 /**
  * Пакет содержит описание лингвистической переменной.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 package ru.argos.fuzzycontroller.variables;

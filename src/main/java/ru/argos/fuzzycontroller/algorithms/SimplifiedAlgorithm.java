@@ -3,9 +3,9 @@ package ru.argos.fuzzycontroller.algorithms;
 import java.util.Map;
 
 /**
- * Упрощенный алгоритм нечекого вывода.
+ * Упрощенный алгоритм нечеткого вывода.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface SimplifiedAlgorithm {
 
@@ -21,9 +21,9 @@ public interface SimplifiedAlgorithm {
     double clarity(Map<String, Double> parameters);
 
     /**
-     * Нечеткое правило.
+     * Нечеткое правило логического вывода.
      *
-     * @author a.k.pohresnyi
+     * @author Anatoliy Pokhresnyi
      */
     interface Rule {
 

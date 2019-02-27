@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Тестовый класс, тестирующий Z-образную функцую принадлежности.
+ * Тестирование Z-образной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public class ZMembershipFunctionTest extends MembershipFunctionTest {
 

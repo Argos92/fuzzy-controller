@@ -1,6 +1,6 @@
 /**
- * Пакет содержит классы реализующие функции принадлежности.
+ * Пакет содержит классы, реализующие стандартные функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 package ru.argos.fuzzycontroller.mf;

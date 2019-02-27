@@ -10,14 +10,14 @@ import static ru.argos.fuzzycontroller.utils.Utils.getOrThrow;
 import static ru.argos.fuzzycontroller.utils.Utils.unmodifiableList;
 
 /**
- * Статический класс в котором реализовано создание лингвистической переменной.
+ * Статический класс, в котором реализовано создание лингвистической переменной.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class VariableBuilder {
 
     /**
-     * Начала интервала.
+     * Начало интервала.
      */
     private static final double START_WITH = 0.0;
 
@@ -32,14 +32,14 @@ public final class VariableBuilder {
     private static final double STEP = 0.0001;
 
     /**
-     * Приветный конструктор.
+     * Приватный конструктор.
      */
     private VariableBuilder() {
 
     }
 
     /**
-     * Создает лингвистическую переменную.
+     * Лингвистическая переменная.
      *
      * @param name Название лингвистической переменной
      * @param terms Список термов, где {@link Map.Entry#getKey()} - название
@@ -53,14 +53,14 @@ public final class VariableBuilder {
     }
 
     /**
-     * Создает лингвистическую переменную.
+     * Лингвистическая переменная.
      *
      * @param name Название лингвистической переменной
-     * @param startWith Начала интервала.
-     * @param endWith Начала интервала.
+     * @param startWith Начало интервала.
+     * @param endWith Конец интервала.
      * @param step Шаг.
      * @param terms Список термов, где {@link Map.Entry#getKey()} - название
-     *             терма, а {@link Map.Entry#getValue()} - функция
+     *              терма, а {@link Map.Entry#getValue()} - функция
      *              принадлежности.
      * @return Лингвистическая переменная.
      */

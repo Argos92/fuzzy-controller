@@ -3,7 +3,7 @@ package ru.argos.fuzzycontroller.variables;
 /**
  * Терм лингвистической переменной.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface Term {
 
@@ -24,7 +24,7 @@ public interface Term {
     double calc(double x);
 
     /**
-     * Линглистическая переменная которой принадлежит терм.
+     * Лингвистическая переменная, которой принадлежит терм.
      *
      * @return Лингвистическая переменная.
      */

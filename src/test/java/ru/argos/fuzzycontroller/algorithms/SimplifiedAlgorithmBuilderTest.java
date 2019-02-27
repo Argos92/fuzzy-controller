@@ -12,6 +12,11 @@ import static ru.argos.fuzzycontroller.algorithms.SimplifiedAlgorithmBuilder.rul
 import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.bell;
 import static ru.argos.fuzzycontroller.operators.OperatorBuilder.and;
 
+/**
+ * Тестирование упрощенного алгоритма нечеткого вывода.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class SimplifiedAlgorithmBuilderTest {
 
     @Test

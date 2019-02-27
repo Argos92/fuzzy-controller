@@ -8,27 +8,27 @@ import java.util.Map;
 /**
  * Вспомогательный класс.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class Utils {
 
     /**
-     * Приветный конструктор.
+     * Приватный конструктор.
      */
     private Utils() {
 
     }
 
     /**
-     * Получает значение по ключу из Map.
+     * Получает значение по ключу из {@link Map}.
      *
-     * @param map Map из которого необходимо получить значение.
+     * @param map {@link Map}, из которого необходимо получить значение.
      * @param key Ключ.
      * @param <K> Тип ключа.
      * @param <V> Тип Значения.
-     * @return Значение из Map.
-     * @throws IllegalArgumentException Если значения по заданному ключу нет
-     *                                 в Map.
+     * @return Значение из {@link Map}.
+     * @throws IllegalArgumentException Если значения по заданному ключу нет в
+     *                                 {@link Map}.
      */
     public static <K, V> V getOrThrow(final Map<K, V> map, final K key) {
         V value = map.get(key);

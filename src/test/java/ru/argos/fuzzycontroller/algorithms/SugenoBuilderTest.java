@@ -16,6 +16,11 @@ import static ru.argos.fuzzycontroller.operators.OperatorBuilder.and;
 import static ru.argos.fuzzycontroller.utils.Utils.getOrThrow;
 import static ru.argos.fuzzycontroller.utils.Utils.unmodifiableList;
 
+/**
+ * Тестирование нечеткого алгоритма логического вывода. Алгоритм Сугено.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class SugenoBuilderTest {
 
     @Test

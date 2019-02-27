@@ -6,9 +6,9 @@ import org.junit.Test;
 import java.util.Map;
 
 /**
- * Тестовый класс, тестирующий функцию принадлежности.
+ * Тестирование стандартной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public abstract class MembershipFunctionTest {
 

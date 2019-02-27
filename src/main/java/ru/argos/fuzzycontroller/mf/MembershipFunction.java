@@ -1,18 +1,16 @@
 package ru.argos.fuzzycontroller.mf;
 
 /**
- * Функция приндлежности.
+ * Функция принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
-@FunctionalInterface
 public interface MembershipFunction {
 
     /**
-     * Метод построения функции принадлежности.
+     * Вычисляет результат функции принадлежности.
      *
-     * @param x Величина, относительно которой формулируется функция
-     *         принадлежности.
+     * @param x Входное значение.
      * @return Результат функции принадлежности.
      */
     double calc(double x);

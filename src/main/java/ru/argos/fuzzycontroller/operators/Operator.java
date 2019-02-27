@@ -8,13 +8,12 @@ import java.util.Map;
 /**
  * Логический оператор.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface Operator {
 
     /**
-     * Приведение к четкости. Преобразование логического оператора в четкое
-     * число.
+     * Преобразование логического оператора в четкое число.
      *
      * @param parameters Входные параметры, где {@link Map.Entry#getKey()} -
      *                  название лингвистической переменной, а
@@ -25,9 +24,9 @@ public interface Operator {
     double calc(Map<String, Double> parameters);
 
     /**
-     * Получает термы содержащиеся в логическом операторе.
+     * Получает термы, содержащиеся в логическом операторе.
      *
-     * @return Термы содержащиеся в логическом операторе.
+     * @return Термы, содержащиеся в логическом операторе.
      */
     List<Term> getTerms();
 }

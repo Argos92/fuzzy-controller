@@ -10,13 +10,41 @@ import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.trapezius;
 import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.triangular;
 import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.zLine;
 
+/**
+ * Тестирование стандартных методов дефаззификации.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class ClarityMethodBuilderTest {
 
+    /**
+     * Функция принадлежности.
+     */
     private static MembershipFunction MF_1 = trapezius(0.2, 0.4, 0.6, 0.8);
+
+    /**
+     * Функция принадлежности.
+     */
     private static MembershipFunction MF_2 = trapezius(0.2, 0.6, 0.8, 1.0);
+
+    /**
+     * Функция принадлежности.
+     */
     private static MembershipFunction MF_3 = triangular(0.25, 0.5, 0.75);
+
+    /**
+     * Функция принадлежности.
+     */
     private static MembershipFunction MF_4 = bell(0.1, 0.2, 0.02);
+
+    /**
+     * Функция принадлежности.
+     */
     private static MembershipFunction MF_5 = zLine(0.0, 0.00001);
+
+    /**
+     * Функция принадлежности.
+     */
     private static MembershipFunction MF_6 = sLine(0.99999, 1.0);
 
     @Test

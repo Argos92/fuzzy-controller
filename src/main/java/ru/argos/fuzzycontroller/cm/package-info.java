@@ -1,6 +1,6 @@
 /**
- * Пакет содержит классы реализующие функции дефаззификации.
+ * Пакет содержит классы, реализующие функции дефаззификации.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 package ru.argos.fuzzycontroller.cm;

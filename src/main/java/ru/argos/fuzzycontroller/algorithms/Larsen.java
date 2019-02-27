@@ -5,37 +5,38 @@ import ru.argos.fuzzycontroller.mf.MembershipFunction;
 import java.util.Map;
 
 /**
- * Нечекий алгоритм вывода Ларсена.
+ * Нечеткий алгоритм логического вывода. Алгоритм Ларсена.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface Larsen {
 
     /**
-     * Композиция. Нахождение функции принадлежности для выходной
+     * Композиция. Нахождение усеченной функции принадлежности для выходной
      * лингвистической переменной.
      *
      * @param parameters Входные параметры, где {@link Map.Entry#getKey()} -
      *                  название лингвистической переменной, а
      *                  {@link Map.Entry#getValue()} - входное значение.
-     * @return Функция принадлежности.
+     * @return Усеченная функция принадлежности.
      */
     MembershipFunction compose(Map<String, Double> parameters);
 
     /**
-     * Нечеткое правило.
+     * Нечеткое правило логического вывода.
      *
-     * @author a.k.pohresnyi
+     * @author Anatoliy Pokhresnyi
      */
     interface Rule {
 
         /**
-         * Композиция. Нахождение усеченной функции принадлежности правила.
+         * Композиция. Нахождение усеченной функции принадлежности нечеткого
+         * правила.
          *
          * @param parameters Входные параметры, где {@link Map.Entry#getKey()} -
          *                  название лингвистической переменной, а
          *                  {@link Map.Entry#getValue()} - входное значение.
-         * @return Функция принадлежности.
+         * @return Усеченная функция принадлежности.
          */
         MembershipFunction compose(Map<String, Double> parameters);
     }

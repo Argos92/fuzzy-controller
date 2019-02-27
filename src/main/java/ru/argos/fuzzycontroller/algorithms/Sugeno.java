@@ -3,9 +3,9 @@ package ru.argos.fuzzycontroller.algorithms;
 import java.util.Map;
 
 /**
- * Нечекий алгоритм вывода Сугено.
+ * Нечеткий алгоритм логического вывода. Алгоритм Сугено.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface Sugeno {
 
@@ -21,9 +21,9 @@ public interface Sugeno {
     double clarity(Map<String, Double> parameters);
 
     /**
-     * Нечеткое правило.
+     * Нечеткое правило логического вывода.
      *
-     * @author a.k.pohresnyi
+     * @author Anatoliy Pokhresnyi
      */
     interface Rule {
 

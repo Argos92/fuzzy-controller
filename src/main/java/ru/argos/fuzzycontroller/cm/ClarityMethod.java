@@ -3,17 +3,17 @@ package ru.argos.fuzzycontroller.cm;
 import ru.argos.fuzzycontroller.mf.MembershipFunction;
 
 /**
- * Функция дефаззификации.
+ * Метод дефаззификации.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface ClarityMethod {
 
     /**
-     * Метод дефаззификации.
+     * Дефаззификация. Преобразование функции принадлежности в четкое число.
      *
      * @param mf Функция принадлежности.
-     * @return Результат функции дефаззификации.
+     * @return Результат дефаззификации.
      */
     double calc(MembershipFunction mf);
 }

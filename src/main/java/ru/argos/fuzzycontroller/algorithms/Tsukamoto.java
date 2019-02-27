@@ -3,9 +3,9 @@ package ru.argos.fuzzycontroller.algorithms;
 import java.util.Map;
 
 /**
- * Нечекий алгоритм вывода Цукамото.
+ * Нечеткий алгоритм логического вывода. Алгоритм Цукамото.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public interface Tsukamoto {
 
@@ -21,9 +21,9 @@ public interface Tsukamoto {
     double clarity(Map<String, Double> parameters);
 
     /**
-     * Нечеткое правило.
+     * Нечеткое правило логического вывода.
      *
-     * @author a.k.pohresnyi
+     * @author Anatoliy Pokhresnyi
      */
     interface Rule {
 
@@ -38,11 +38,11 @@ public interface Tsukamoto {
         double condition(Map<String, Double> parameters);
 
         /**
-         * Вычисляет входное заначение у закличения. По соглащению функция,
-         * которая задана в заключении является монотонной.
+         * Вычисляет входное значение у заключения. По соглащению функция,
+         * которая задана в заключении, является монотонной.
          *
          * @param probability Значение функции принадлежности, для которого
-         *                    необходимо най входное значение.
+         *                    необходимо найти входное значение.
          * @param delta Допустимая погрешность.
          * @return Входное значение
          */

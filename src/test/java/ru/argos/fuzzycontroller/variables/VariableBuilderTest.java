@@ -8,6 +8,11 @@ import ru.argos.fuzzycontroller.operators.Operator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Тестирование лингвистической переменной.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class VariableBuilderTest {
 
     @Test

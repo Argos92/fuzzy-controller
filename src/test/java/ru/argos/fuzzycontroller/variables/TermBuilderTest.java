@@ -6,6 +6,11 @@ import ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder;
 
 import java.util.Map;
 
+/**
+ * Тестирование терма лингвистической переменной.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class TermBuilderTest {
 
     @Test

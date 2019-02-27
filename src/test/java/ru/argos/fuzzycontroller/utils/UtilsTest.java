@@ -9,6 +9,11 @@ import java.util.Map;
 import static ru.argos.fuzzycontroller.utils.Utils.getOrThrow;
 import static ru.argos.fuzzycontroller.utils.Utils.unmodifiableList;
 
+/**
+ * Тестирование вспомогательного класса.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class UtilsTest {
 
     @Test

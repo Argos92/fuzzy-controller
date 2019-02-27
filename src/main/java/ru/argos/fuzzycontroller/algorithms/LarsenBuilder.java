@@ -7,10 +7,10 @@ import ru.argos.fuzzycontroller.variables.Term;
 import java.util.List;
 
 /**
- * Статический класс, описания системы нечеткого логического вывода по алгоритму
- * Ларсена.
+ * Статический класс, описывающий систему нечеткого логического вывода по
+ * алгоритму Ларсена.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class LarsenBuilder {
 

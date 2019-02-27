@@ -8,21 +8,21 @@ import java.util.Map;
 import static ru.argos.fuzzycontroller.utils.Utils.unmodifiableList;
 
 /**
- * Статический класс в котором реализованы логические операторы.
+ * Статический класс, в котором реализованы логические операторы.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class OperatorBuilder {
 
     /**
-     * Приветный конструктор.
+     * Приватный конструктор.
      */
     private OperatorBuilder() {
 
     }
 
     /**
-     * Создает логический оператор <strong>И</strong>.
+     * Логический оператор <strong>И</strong>.
      *
      * @param o1 Логический оператор.
      * @param o2 Логический оператор.
@@ -48,7 +48,7 @@ public final class OperatorBuilder {
     }
 
     /**
-     * Создает логический оператор <strong>Или</strong>.
+     * Логический оператор <strong>Или</strong>.
      *
      * @param o1 Логический оператор.
      * @param o2 Логический оператор.
@@ -73,7 +73,7 @@ public final class OperatorBuilder {
     }
 
     /**
-     * Создает логический оператор <strong>Не</strong>.
+     * Логический оператор <strong>Не</strong>.
      *
      * @param operator Логический оператор.
      * @return Логический оператор <strong>Не</strong>.

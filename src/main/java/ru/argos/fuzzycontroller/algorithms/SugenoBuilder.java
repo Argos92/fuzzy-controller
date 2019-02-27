@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Статический класс, описания системы нечеткого логического вывода по аглогитму
- * Сугено.
+ * Статический класс, описывающий систему нечеткого логического вывода по
+ * алгоритму Сугено.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class SugenoBuilder {
 

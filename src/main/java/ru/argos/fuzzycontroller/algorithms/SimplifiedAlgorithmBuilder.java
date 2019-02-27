@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Статический класс, описания системы нечеткого логического вывода по
+ * Статический класс, описывающий систему нечеткого логического вывода по
  * упрощенному алгоритму.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class SimplifiedAlgorithmBuilder {
 

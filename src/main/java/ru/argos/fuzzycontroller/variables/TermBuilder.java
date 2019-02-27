@@ -3,27 +3,27 @@ package ru.argos.fuzzycontroller.variables;
 import ru.argos.fuzzycontroller.mf.MembershipFunction;
 
 /**
- * Статический класс в котором реализовано создание терма лингвистической
+ * Статический класс, в котором реализовано создание терма лингвистической
  * переменной.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class TermBuilder {
 
     /**
-     * Приветный конструктор.
+     * Приватный конструктор.
      */
     private TermBuilder() {
 
     }
 
     /**
-     * Создает терм лингвистической переменной.
+     * Терм лингвистической переменной.
      *
      * @param variable Лингвистическая переменная.
      * @param name Название терма.
      * @param mf Функция принадлежности терма.
-     * @return Терм лингвистичской переменной.
+     * @return Терм лингвистической переменной.
      */
     public static Term of(final Variable variable,
                           final String name,

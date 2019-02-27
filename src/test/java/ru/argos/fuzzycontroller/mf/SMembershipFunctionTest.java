@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Тестовый класс, тестирующий S-образную функцую принадлежности.
+ * Тестирование S-образной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public class SMembershipFunctionTest extends MembershipFunctionTest {
 

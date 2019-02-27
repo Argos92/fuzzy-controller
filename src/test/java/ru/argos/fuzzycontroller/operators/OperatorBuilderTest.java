@@ -19,11 +19,31 @@ import static ru.argos.fuzzycontroller.operators.OperatorBuilder.or;
 import static ru.argos.fuzzycontroller.utils.Utils.unmodifiableList;
 import static ru.argos.fuzzycontroller.variables.VariableBuilder.of;
 
+/**
+ * Тестирование логических операторов.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class OperatorBuilderTest {
 
+    /**
+     * Лингвистическая переменная.
+     */
     private static final Variable A = of("A", Map.of("a", trapezius(10, 20, 30, 40)));
+
+    /**
+     * Лингвистическая переменная.
+     */
     private static final Variable B = of("B", Map.of("b", triangular(10, 20, 30)));
+
+    /**
+     * Лингвистическая переменная.
+     */
     private static final Variable D = of("D", Map.of("d", sigmoid(10, 20)));
+
+    /**
+     * Лингвистическая переменная.
+     */
     private static final Variable C = of("C", Map.of("c", bell(10, 20, 30)));
 
     @Test

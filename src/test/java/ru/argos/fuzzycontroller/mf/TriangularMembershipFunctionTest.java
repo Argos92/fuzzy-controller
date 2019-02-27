@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Тестовый класс, тестирующий триугольную функцую принадлежности.
+ * Тестирование треугольной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public class TriangularMembershipFunctionTest extends MembershipFunctionTest {
 

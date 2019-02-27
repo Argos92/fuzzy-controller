@@ -2,7 +2,6 @@ package ru.argos.fuzzycontroller.algorithms;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.argos.fuzzycontroller.algorithms.Tsukamoto.Rule;
 import ru.argos.fuzzycontroller.variables.Variable;
 import ru.argos.fuzzycontroller.variables.VariableBuilder;
 
@@ -15,6 +14,11 @@ import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.sLine;
 import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.zLine;
 import static ru.argos.fuzzycontroller.operators.OperatorBuilder.and;
 
+/**
+ * Тестирование нечеткого алгоритма логического вывода. Алгоритм Цукамото.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class TsukamotoBuilderTest {
 
     @Test
@@ -41,7 +45,7 @@ public class TsukamotoBuilderTest {
                         "tip_100", sLine(0.75, 1.00)));
 
 
-        List<Rule> rules = List.of(
+        List<Tsukamoto.Rule> rules = List.of(
                 rule(and(food.is("food_000"), service.is("service_000")), tip.get("tip_025")),
                 rule(and(food.is("food_000"), service.is("service_025")), tip.get("tip_025")),
                 rule(and(food.is("food_000"), service.is("service_050")), tip.get("tip_025")),

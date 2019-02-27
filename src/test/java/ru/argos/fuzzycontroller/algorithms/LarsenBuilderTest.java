@@ -16,6 +16,11 @@ import static ru.argos.fuzzycontroller.cm.ClarityMethodBuilder.rightMaximum;
 import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.bell;
 import static ru.argos.fuzzycontroller.operators.OperatorBuilder.and;
 
+/**
+ * Тестирование нечеткого алгоритма логического вывода. Алгоритм Ларсена.
+ *
+ * @author Anatoliy Pokhresnyi
+ */
 public class LarsenBuilderTest {
 
     @Test

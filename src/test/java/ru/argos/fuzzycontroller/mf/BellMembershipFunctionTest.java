@@ -8,9 +8,9 @@ import java.util.Map;
 import static ru.argos.fuzzycontroller.mf.MembershipFunctionBuilder.bell;
 
 /**
- * Тестовый класс, тестирующий колокообразную функцию принадлежности.
+ * Тестирование колокообразной функции принадлежности.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public class BellMembershipFunctionTest extends MembershipFunctionTest {
 

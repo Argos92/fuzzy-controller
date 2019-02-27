@@ -3,14 +3,14 @@ package ru.argos.fuzzycontroller.cm;
 import java.util.function.BiFunction;
 
 /**
- * Статический класс в котором реализованы стандартные методы дефаззификации.
+ * Статический класс, описывающий стандартные методы дефаззификации.
  *
- * @author a.k.pohresnyi
+ * @author Anatoliy Pokhresnyi
  */
 public final class ClarityMethodBuilder {
 
     /**
-     * Начала интервала.
+     * Начало интервала.
      */
     private static final double START_WITH = 0.0;
 
@@ -43,7 +43,7 @@ public final class ClarityMethodBuilder {
     /**
      * Метод центра тяжести.
      *
-     * @param startWith Начала интервала.
+     * @param startWith Начало интервала.
      * @param endWith Конец интервала.
      * @param step Шаг.
      * @return Метод дефаззификации.
@@ -75,7 +75,7 @@ public final class ClarityMethodBuilder {
     /**
      * Метод среднего максимума.
      *
-     * @param startWith Начала интервала.
+     * @param startWith Начало интервала.
      * @param endWith Конец интервала.
      * @param step Шаг.
      * @return Метод дефаззификации.
@@ -117,7 +117,7 @@ public final class ClarityMethodBuilder {
     /**
      * Метод левого максимума.
      *
-     * @param startWith Начала интервала.
+     * @param startWith Начало интервала.
      * @param endWith Конец интервала.
      * @param step Шаг.
      * @return Метод дефаззификации.
@@ -140,7 +140,7 @@ public final class ClarityMethodBuilder {
     /**
      * Метод правого максимума.
      *
-     * @param startWith Начала интервала.
+     * @param startWith Начало интервала.
      * @param endWith Конец интервала.
      * @param step Шаг.
      * @return Метод дефаззификации.
@@ -154,7 +154,7 @@ public final class ClarityMethodBuilder {
     /**
      * Метод левого/правого максимума.
      *
-     * @param startWith Начала интервала.
+     * @param startWith Начало интервала.
      * @param endWith Конец интервала.
      * @param step Шаг.
      * @param function Функция выбора значения.
