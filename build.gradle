@@ -1,0 +1,147 @@
+plugins {
+    id 'pmd'
+    id 'java'
+    id 'maven'
+    id 'jacoco'
+    id 'checkstyle'
+    id 'maven-publish'
+//    id 'de.aaschmid.cpd' version '1.2'
+    id 'com.jfrog.bintray' version '1.8.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+//apply plugin: 'cpd'
+apply plugin: 'pmd'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'jacoco'
+apply plugin: 'checkstyle'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+group 'com.github.onotoliy.fuzzycontroller'
+version "$version"
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+publishing {
+    repositories {
+        maven {
+            url  = 'https://dl.bintray.com/a-k-pohresniy/fuzzy-controller'
+        }
+    }
+
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId = project.group
+            artifactId = project.archivesBaseName
+            version = project.version
+        }
+    }
+}
+
+bintray {
+    user = 'a-k-pohresniy'
+    key = '61891da6146e09d692266668fcf795d84824afa6'
+    publications = ['MyPublication']
+    publish = true
+    pkg {
+        repo = 'onotoliy'
+        name = 'fuzzy-controller'
+        userOrg = 'a-k-pohresniy'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/onotoliy/fuzzy-controller.git'
+    }
+    version {
+        name = project.version
+        released = new Date()
+        vcsTag = project.version
+
+        gpg {
+            sign = true
+            passphrase = 'Lenovo14'
+        }
+    }
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+checkstyle {
+    toolVersion '7.8.1'
+    configFile file('checkstyle.xml')
+}
+
+checkstyleMain {
+    source = sourceSets.main.allJava
+}
+
+checkstyleTest {
+    source = sourceSets.main.allJava
+}
+
+pmd {
+    rulePriority 1
+    ruleSetFiles file("pmd.xml")
+}
+
+pmdMain {
+    source = sourceSets.main.allJava
+}
+
+pmdTest {
+    source = sourceSets.main.allJava
+}
+
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled true
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'BUNDLE'
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                minimum = 0.9
+            }
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+check.dependsOn jacocoTestCoverageVerification
