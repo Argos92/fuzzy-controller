@@ -1,6 +1,7 @@
-#Алгоритмы нечеткого логического вывода
+# Алгоритмы нечеткого логического вывода
 
-##Добавление в проект
+
+## Добавление в проект
 
 **Gradle**:
 ```
@@ -43,40 +44,4 @@ dependencies {
     <version>1.0.2</version>
     <type>jar</type>
 </dependency>
-```
-*settings.xml*
-```
-<settings xmlns='http://maven.apache.org/SETTINGS/1.0.0' xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <profiles>
-    <profile>
-
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>
-              false
-            </enabled>
-          </snapshots>
-          <id>
-            bintray-a-k-pohresniy-onotoliy
-          </id>
-          <name>
-            bintray-plugins
-          </name>
-          <url>
-            https://dl.bintray.com/a-k-pohresniy/onotoliy
-          </url>
-        </pluginRepository>
-      </pluginRepositories>
-      <id>
-        bintray
-      </id>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>
-      bintray
-    </activeProfile>
-  </activeProfiles>
-</settings>
 ```
