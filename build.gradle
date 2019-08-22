@@ -25,6 +25,16 @@ apply plugin: 'com.jfrog.bintray'
 group 'com.github.onotoliy.fuzzycontroller'
 version "$version"
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
 dependencies {
     testCompile 'junit:junit:4.12'
 }
@@ -42,6 +52,9 @@ publishing {
             groupId = project.group
             artifactId = project.archivesBaseName
             version = project.version
+
+            artifact sourcesJar
+            artifact javadocJar
         }
     }
 }
@@ -127,16 +140,6 @@ jacocoTestCoverageVerification {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
 }
 
 artifacts {
