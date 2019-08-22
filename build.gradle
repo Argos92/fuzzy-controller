@@ -25,6 +25,10 @@ apply plugin: 'com.jfrog.bintray'
 group 'com.github.onotoliy.fuzzycontroller'
 version "$version"
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
@@ -136,10 +140,6 @@ jacocoTestCoverageVerification {
             }
         }
     }
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
 }
 
 artifacts {
