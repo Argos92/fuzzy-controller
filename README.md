@@ -21,7 +21,7 @@ repositories {
 
 
 dependencies {
-    compile 'com.github.onotoliy.fuzzycontroller:fuzzy-controller:1.0.0'
+    compile 'com.github.onotoliy:fuzzy-controller:1.0.0'
 }
 ```
 
@@ -47,7 +47,7 @@ dependencies {
 </repositories>
 
 <dependency>
-    <groupId>com.github.onotoliy.fuzzycontroller</groupId>
+    <groupId>com.github.onotoliy</groupId>
     <artifactId>fuzzy-controller</artifactId>
     <version>1.0.0</version>
     <type>jar</type>
