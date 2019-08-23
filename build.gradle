@@ -5,7 +5,6 @@ plugins {
     id 'jacoco'
     id 'checkstyle'
     id 'maven-publish'
-//    id 'de.aaschmid.cpd' version '1.2'
     id 'com.jfrog.bintray' version '1.8.4'
 }
 
@@ -13,7 +12,6 @@ repositories {
     mavenCentral()
 }
 
-//apply plugin: 'cpd'
 apply plugin: 'pmd'
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -22,7 +20,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
-group 'com.github.onotoliy.fuzzycontroller'
+group 'com.github.onotoliy'
 version "$version"
 
 tasks.withType(JavaCompile) {
