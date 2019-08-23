@@ -1,7 +1,15 @@
 # Алгоритмы нечеткого логического вывода
 
+Библиотека реализующая алгоритмы нечеткого логического вывода.
 
-## Добавление в проект
+Реализованы следующие алгоритмы:
++ Алгоритм Ларсена.
++ Алгоритм Мамдани.
++ Алгоритм Сугено.
++ Алгоритм Цукамото.
++ Упрощенный алгоритм нечеткого вывода.
+
+#### Подключение
 
 **Gradle**:
 ```
@@ -13,7 +21,7 @@ repositories {
 
 
 dependencies {
-    compile 'com.github.onotoliy.fuzzycontroller:fuzzy-controller:1.0.2'
+    compile 'com.github.onotoliy.fuzzycontroller:fuzzy-controller:1.0.0'
 }
 ```
 
@@ -41,7 +49,14 @@ dependencies {
 <dependency>
     <groupId>com.github.onotoliy.fuzzycontroller</groupId>
     <artifactId>fuzzy-controller</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.0</version>
     <type>jar</type>
 </dependency>
 ```
+
+#### Примеры использования
++ [Алгоритм Ларсена](https://github.com/onotoliy/fuzzy-controller/blob/master/src/test/java/com/github/onotoliy/fuzzycontroller/algorithms/LarsenBuilderTest.java)
++ [Алгоритм Мамдани](https://github.com/onotoliy/fuzzy-controller/blob/master/src/test/java/com/github/onotoliy/fuzzycontroller/algorithms/MamdaniBuilderTest.java)
++ [Алгоритм Сугено](https://github.com/onotoliy/fuzzy-controller/blob/master/src/test/java/com/github/onotoliy/fuzzycontroller/algorithms/SugenoBuilderTest.java)
++ [Алгоритм Цукамото](https://github.com/onotoliy/fuzzy-controller/blob/master/src/test/java/com/github/onotoliy/fuzzycontroller/algorithms/TsukamotoBuilderTest.java)
++ [Упрощенный алгоритм нечеткого вывода](https://github.com/onotoliy/fuzzy-controller/blob/master/src/test/java/com/github/onotoliy/fuzzycontroller/algorithms/SimplifiedAlgorithmBuilderTest.java)
